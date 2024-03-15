@@ -1,4 +1,4 @@
-#!/bin/usr/python3
+#!/usr/bin/python3
 """Module to GET data from a json"""
 import requests
 import sys
