@@ -31,7 +31,7 @@ class GetMethod:
             f"({len(finished_tasks)}/{len(todos)}):"
         )
         for task in finished_tasks:
-            print(f"\t{task['title']}")
+            print(f"\t {task['title']}")
 
 
 if __name__ == "__main__":
