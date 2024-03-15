@@ -5,28 +5,32 @@ import sys
 class GetMethod:
 
     def to_do(employ_id):
+        
+        employ_id = sys.argv[1]
 
         # Setting URLS
         Base_URL = "https://jsonplaceholder.typicode.com"
-        Users_URL =  requests.get(Base_URL + "/users")
-        To_do_URL = requests.get(Base_URL + "/todo")
+        Users_url =  f"{Base_URL}/users/{employ_id}"
+        To_do_URL = f"{Base_URL}/todos"
 
-        # Setting up JSONS
-        User_json = Users_URL.json()
-        To_Do_json = To_do_URL.json()
+        # Grabbing employee name and ID
+        User = requests.get(Users_url)
+        Employee_name = User.json().get('name')
+        
+        #Setting up to do
+        params = {"userId": employ_id}
+        todos_total = requests.get(To_do_URL, params=params)
+        todos = todos_total.json()
+        finished_tasks = [todo for todo in todos if todo['completed']]
 
-        #Pulling name and ID from User_json
-        for item in User_json:
-            name = item['name']
-            id = item['id']
-
-        # Testing
-        if User_json[id] == To_Do_json[id]:
-            print("Well done")
-
-    # def employee_name(ident):
-        # Base_URL = "https://jsonplaceholder.typicode.com/users/"
+        #Formatting
+        print(
+            f"Employee {Employee_name} is done with tasks"
+            f"({len(finished_tasks)}/{len(todos)}):"
+        )
+        for task in finished_tasks:
+            print(f"\t{task['title']}")
 
 if __name__ == "__main__":
-    args = sys.argv
+    args = int(sys.argv[1])
     GetMethod().to_do()
