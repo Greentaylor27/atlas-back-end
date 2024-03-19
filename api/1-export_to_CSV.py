@@ -10,8 +10,6 @@ class GetMethod:
 
     def to_do(employ_id):
 
-        employ_id = sys.argv[1]
-
         # Setting URLS
         Base_URL = "https://jsonplaceholder.typicode.com"
         Users_url = f"{Base_URL}/users/{employ_id}"
