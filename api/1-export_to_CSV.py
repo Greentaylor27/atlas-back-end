@@ -18,7 +18,7 @@ class GetMethod:
         To_do_URL = f"{Base_URL}/todos"
 
         # Grabbing employee name and ID
-        User = requests.get(Users_url).json
+        User = requests.get(Users_url).json()
         username = User.get('username')
 
         # Setting up to do
