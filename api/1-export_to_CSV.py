@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 """Module to GET data from a json"""
-import requests
-import sys
 import csv
 import json
+import requests
+import sys
 
 
 class GetMethod:
