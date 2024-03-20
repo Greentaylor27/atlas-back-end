@@ -13,8 +13,8 @@ def to_do(employ_id):
     user_data = requests.get(users_url).json()
     username = user_data.get('username')
 
-    todos_response = requests.get(todos_url, 
-                                  params={'userId': employ_id}).json()
+    todos_response = requests.get(todos_url,
+                                params={'userId': employ_id}).json()
 
     file_name = f"{employ_id}.csv"
     with open(file_name, 'w') as file:
