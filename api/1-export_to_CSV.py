@@ -20,7 +20,7 @@ def to_do(employ_id):
     with open(file_name, 'w') as file:
         write = csv.writer(file, quoting=csv.QUOTE_ALL)
         for todo in todos_response:
-            write.writerow([employ_id, username, 
+            write.writerow([employ_id, username,
                             todo['completed'], todo['title']])
 
 
